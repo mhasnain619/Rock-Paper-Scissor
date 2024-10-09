@@ -2,6 +2,9 @@ let userScore = 0
 let computerScore = 0
 
 let msg = document.getElementById('msg')
+let userScoreBoard = document.getElementById('user-score')
+let computerScoreBoard = document.getElementById('comp-score')
+
 
 const choices = document.querySelectorAll('.choice')
 choices.forEach((choice) => {
@@ -16,18 +19,22 @@ const generateComputerChoice = () => {
     return options[ranind]
 }
 const drawGame = () => {
-    msg.innerText = 'Game draw'
+    msg.innerText = 'Game draw..? play again'
     msg.style.backgroundColor = '#081b31'
     console.log('Game draw');
 
 }
-const showWinner = (userWin) => {
+const showWinner = (userWin, userChoice, computerChoice) => {
     if (userWin) {
-        msg.innerText = 'You Win'
+        userScore++
+        userScoreBoard.innerText = userScore
+        msg.innerText = `You Win! your ${userChoice} beats ${computerChoice}`
         msg.style.backgroundColor = 'green'
         console.log('You win');
     } else {
-        msg.innerText = 'You lose'
+        computerScore++
+        computerScoreBoard.innerText = computerScore
+        msg.innerText = `You lose! ${computerChoice} beats your ${userChoice}`
         msg.style.backgroundColor = 'red'
 
     }
@@ -54,6 +61,6 @@ const playGame = (userChoice) => {
             userWin = true
         }
 
-        showWinner(userWin)
+        showWinner(userWin, userChoice, computerChoice)
     }
 }
