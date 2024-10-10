@@ -13,24 +13,28 @@ choices.forEach((choice) => {
         playGame(userChoice)
     })
 })
+
+
 const generateComputerChoice = () => {
     const options = ['rock', 'paper', 'scissors']
     const ranind = Math.floor(Math.random() * 3)
     return options[ranind]
 }
+
+
 const drawGame = () => {
     msg.innerText = 'Game draw..? play again'
     msg.style.backgroundColor = '#081b31'
-    console.log('Game draw');
 
 }
+
+
 const showWinner = (userWin, userChoice, computerChoice) => {
     if (userWin) {
         userScore++
         userScoreBoard.innerText = userScore
         msg.innerText = `You Win! your ${userChoice} beats ${computerChoice}`
         msg.style.backgroundColor = 'green'
-        console.log('You win');
     } else {
         computerScore++
         computerScoreBoard.innerText = computerScore
@@ -40,12 +44,12 @@ const showWinner = (userWin, userChoice, computerChoice) => {
     }
 
 }
+
+
 const playGame = (userChoice) => {
-    console.log('user choice = ', userChoice);
 
     // generate computer choice
     const computerChoice = generateComputerChoice()
-    console.log('computer choice = ', computerChoice);
 
     if (userChoice === computerChoice) {
         drawGame()
